@@ -15,10 +15,6 @@ class HomesController < ApplicationController
         @list = List.where(user_id: @current_user.id)
       end
     end
-
-
-
-
   end
 
   # GET /homes/1

@@ -8,7 +8,9 @@ class User < ActiveRecord::Migration[5.1]
   		t.string :password_digest
       t.string :provider
       t.string :uid
-  		
+      t.string :name
+      t.string :oauth_token
+      t.datetime :oauth_expires_at
   	end
   end
 end

@@ -8,9 +8,7 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   get '/logout',  to: 'sessions#destroy'
-  get 'auth/facebook/callback', to: 'sessions#create'
-  get 'auth/failure', to: redirect('/')
-
+  get "/auth/google_oauth2/callback" => "sessions#create_from_omniauth"
 
   root to: "homes#index"
 end

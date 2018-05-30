@@ -18,7 +18,7 @@
  -->  </div>
 </div>	
 
-<a href="/auth/facebook/callback">  Facebook Log In </a>
+<%= link_to "Sign in with Google", "/auth/google_oauth2" %>
 
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
