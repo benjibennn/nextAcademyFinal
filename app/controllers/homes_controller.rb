@@ -4,7 +4,12 @@ class HomesController < ApplicationController
   # GET /homes
   # GET /homes.json
   def index
-    @homes = Home.all
+    @homes = Home.all 
+    if session[:user_id]
+      @current_user =  User.find(session[:user_id])
+      @list = List.where(user_id: @current_user.id)
+      @new = List.new
+    end
   end
 
   # GET /homes/1
@@ -15,6 +20,10 @@ class HomesController < ApplicationController
   # GET /homes/new
   def new
     @home = Home.new
+
+    respond_to do |format|  
+      format.js { render 'lists/new'}
+    end  
   end
 
   # GET /homes/1/edit
