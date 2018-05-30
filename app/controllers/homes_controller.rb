@@ -6,10 +6,19 @@ class HomesController < ApplicationController
   def index
     @homes = Home.all 
     if session[:user_id]
-      @current_user =  User.find(session[:user_id])
-      @list = List.where(user_id: @current_user.id)
-      @new = List.new
+      if !(params[:search] == "") && 
+          @current_user =  User.find(session[:user_id])
+          list = List.where(user_id: @current_user.id)
+          @list = list.search(params[:search])
+      else
+        @current_user =  User.find(session[:user_id])
+        @list = List.where(user_id: @current_user.id)
+      end
     end
+
+
+
+
   end
 
   # GET /homes/1
