@@ -1,10 +1,53 @@
 <p id="notice"><%= notice %></p>
-<h1>To-Do List</h1>
-<%=  cookies[:email] %>
+  <h1>To-Do List</h1>
+    <% if session[:user_id] %>
+      <h2> Welcome <%=  @current_user.first_name %> </h2>
 
+      <div class="ajax-form">
 
+      </div>
+
+      <% @list.each do |l| %>
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title"> <%= l.name %></h5>
+            <p class="card-text"> <%= l.description %></p>
+          </div>
+        </div>
+      <% end %>
+      <%= link_to 'New List', new_list_path, :remote => true, :class => "new-list" %>
+
+    <% end %>
 <br>
+    <% if !session[:user_id]%>
+      <a href="/login"> Log In </a>
+      <a href="/users/new"> Sign Up </a>
+    <% end %>
 
-<a href="/login"> Log In </a>
-<a href="/users/new"> Sign Up </a>
 
+
+<!--   <a class="nav-link" href="/lists/new" :remote => true, :class => 'delete_pony'>Create New Task</a> -->
+
+<div id="content"></div>
+<!-- <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : ENV['facebook_app_id'],
+      cookie     : true,
+      xfbml      : true,
+      version    : '3.0'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+ -->

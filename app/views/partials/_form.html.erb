@@ -1,4 +1,4 @@
-<%= form_with(model: @list, remote: true) do |f| %>
+<%= form_with(model: list, local: true) do |f| %>
   
     Task Name: <%= f.text_field :name %><br />
     Task Description : <%= f.text_field :description %><br />

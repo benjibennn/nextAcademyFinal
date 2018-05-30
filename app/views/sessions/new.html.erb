@@ -18,6 +18,31 @@
  -->  </div>
 </div>	
 
+<a href="/auth/facebook/callback">  Facebook Log In </a>
+
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
       <% end %>
+
+
+<!-- <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '2066705850320839',
+      cookie     : true,
+      xfbml      : true,
+      version    : '2.0'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script> -->

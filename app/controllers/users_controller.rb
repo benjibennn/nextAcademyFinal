@@ -30,4 +30,7 @@ class UsersController < ApplicationController
     cookies.delete :password
   end
 
+
+
+
 end

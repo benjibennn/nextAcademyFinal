@@ -15,6 +15,10 @@ class ListsController < ApplicationController
   # GET /lists/new
   def new
     @list = List.new
+    # render json: @list
+    respond_to do |format|
+      format.js
+    end
   end
 
   # GET /lists/1/edit
@@ -24,17 +28,13 @@ class ListsController < ApplicationController
   # POST /lists
   # POST /lists.json
   def create
-    @list = List.new(list_params)
-
-    respond_to do |format|
+    user_id = User.find(session[:user_id]).id
+    @list = List.new(name: params[:list][:name], description:params[:list][:description], user_id: "#{user_id}")
       if @list.save
-        format.html { redirect_to @list, notice: 'List was successfully created.' }
-        format.json { render :show, status: :created, location: @list }
+        redirect_to '/'
       else
-        format.html { render :new }
-        format.json { render json: @list.errors, status: :unprocessable_entity }
+        render :new
       end
-    end
   end
 
   # PATCH/PUT /lists/1

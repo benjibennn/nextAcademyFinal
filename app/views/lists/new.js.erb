@@ -1,0 +1,14 @@
+console.log("hello")
+console.log('<%= @x %>')
+console.log('<%= @list %>')
+
+// $('#render_partial_form').html("<%= escape_javascript (render partial: 'form') %>");
+// document.getElementById("form").append("hello");
+
+var content = document.getElementById("content");
+console.log(content);
+
+// content.append("<%= j render 'lists/form' %>")
+
+
+content.innerHTML = "<%= raw(j render 'lists/form') %>";
