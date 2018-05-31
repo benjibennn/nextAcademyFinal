@@ -12,8 +12,8 @@ class User < ApplicationRecord
    user = self.create!(
     name: auth_hash["info"]["name"],
     email: auth_hash["info"]["email"],
-    password: SecureRandom.hex(10)
-
+    password: SecureRandom.hex(10),
+    first_name: "test"
    )
    user.authentications << authentication
    return user
