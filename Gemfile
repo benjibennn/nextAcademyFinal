@@ -39,6 +39,8 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'rspec-rails', '~> 3.7'
+
 end
 
 group :development do
@@ -57,10 +59,9 @@ gem "figaro"
 gem "omniauth-google-oauth2", "~> 0.2.1"
 gem 'pg_search'
 gem 'google-api-client', require: 'google/apis/calendar_v3'
-group :development, :test do
-  gem 'rspec-rails', '~> 3.7'
-end
 gem 'rspec-given'
+
+
 
 
 

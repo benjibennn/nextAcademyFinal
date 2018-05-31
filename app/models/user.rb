@@ -2,6 +2,11 @@ class User < ApplicationRecord
 	has_secure_password
 	has_many :list
   has_many :authentications, dependent: :destroy
+  validates :first_name, presence: true
+  validates :email, uniqueness: true
+
+
+
 
  def self.create_with_auth_and_hash(authentication, auth_hash)
    user = self.create!(
