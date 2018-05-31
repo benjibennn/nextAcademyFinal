@@ -9,7 +9,6 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -40,6 +39,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 3.7'
+  gem 'sqlite3'
 
 end
 
@@ -60,6 +60,11 @@ gem "omniauth-google-oauth2", "~> 0.2.1"
 gem 'pg_search'
 gem 'google-api-client', require: 'google/apis/calendar_v3'
 gem 'rspec-given'
+
+group :production do
+  gem 'pg'
+end
+
 
 
 

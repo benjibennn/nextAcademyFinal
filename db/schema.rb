@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 20180530092204) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "authentications", force: :cascade do |t|
     t.string "uid"
     t.string "token"
     t.string "provider"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_authentications_on_user_id"
@@ -30,7 +33,7 @@ ActiveRecord::Schema.define(version: 20180530092204) do
   create_table "lists", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_lists_on_user_id"
@@ -39,7 +42,7 @@ ActiveRecord::Schema.define(version: 20180530092204) do
   create_table "pg_search_documents", force: :cascade do |t|
     t.text "content"
     t.string "searchable_type"
-    t.integer "searchable_id"
+    t.bigint "searchable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id"
@@ -58,4 +61,5 @@ ActiveRecord::Schema.define(version: 20180530092204) do
     t.datetime "oauth_expires_at"
   end
 
+  add_foreign_key "authentications", "users"
 end
