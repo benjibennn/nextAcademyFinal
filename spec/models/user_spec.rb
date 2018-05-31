@@ -7,10 +7,11 @@ RSpec.describe User, type: :model do
       describe "can be created when all attributes are present" do
       When(:user) { User.create(
         first_name: "ben",
-        email: "ben@ben.com",
+        email: "asdasdasdasdasdasasdasdsadsa@c.com",
         password: "123456",
       )}
-      Then { user.valid? == true }
+      Then { 
+        user.valid? == true }
     end
   end
 
