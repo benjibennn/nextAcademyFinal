@@ -1,0 +1,10 @@
+// // quote.getJSON("https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=jsonp&jsonp=?");
+let x = Math.floor(Math.random() *10);
+if (1 > x || x > 10) {
+	x = Math.floor(Math.random() * 10);
+}
+console.log(x)
+
+$.getJSON("http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=10", function(a) {
+  $("#quote-area").append(a[1].content + "<p> " + a[1].title + "</p>")
+});

@@ -7,6 +7,7 @@
   <%= text_field_tag(:search) %>
   <%= submit_tag("Search") %>
 <% end %>
+<div id="quote-area"> </div>
 
     <% if session[:user_id] %>
       <h2> Welcome <%=  @current_user.first_name %> </h2>
@@ -23,7 +24,9 @@
         </div>
       <% end %>
       <%= link_to 'New List', new_list_path, :remote => true, :class => "new-list" %>
-
+      <%# link_to 'Quote', :class => 'quote' %>
+      <button id="quote">Quote</button>
+      <%#= link_to "Show Quote",controller: "homes", action: "show", id: session[:user_id] %>
     <% end %>
 <br>
     <% if !session[:user_id]%>
@@ -32,4 +35,42 @@
     <% end %>
 
 <div id="content"></div>
+
+<script>
+// $('#quote').on('click', function(e) {
+//     // e.preventDefault();
+//     $.ajax({
+//       type: "GET",
+//       url: 'http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=10',
+//       success: function(data) {
+//         console.log(data);
+//           $("#quote-area").append(data[Math.floor(Math.random()*data.length)].content);
+//     }
+//   })
+// });
+
+
+
+$('#quote').click(function() {
+  console.log("Im clicked!")
+  $.ajax({
+      type: "GET",
+      url: "https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=jsonp&jsonp=?",
+      jsonp: "jsonp",
+      dataType: "jsonp",
+        success: function(data){
+          console.log(data)
+          console.log(data.quoteText)
+              $("#content").text(data.quoteText);
+      }
+    })
+});
+
+
+
+
+
+
+</script>
+
 

@@ -22,6 +22,12 @@ class HomesController < ApplicationController
   def show
   end
 
+  def quote
+    # p "hello"
+    # respond_to do |format|
+    #   format.js
+    # end
+  end
   # GET /homes/new
   def new
     @home = Home.new
