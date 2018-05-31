@@ -15,10 +15,9 @@ class ListsController < ApplicationController
   # GET /lists/new
   def new
     @list = List.new
-    # render json: @list
-    respond_to do |format|
-      format.js
-    end
+    # respond_to do |format|
+    #   format.js
+    # end
   end
 
   # GET /lists/1/edit
